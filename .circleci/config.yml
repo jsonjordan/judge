@@ -1,5 +1,7 @@
 ---
 version: 2.1
+orbs:
+  bundle-install: toshimaru/bundle-install@x.y.z
 jobs:
   build:
     working_directory: ~/judge
@@ -11,13 +13,14 @@ jobs:
 
     steps:
       - checkout
+      - bundle-install/bundle-install
 
       # Restore Cached Dependencies
       - restore_cache:
           key: judge-{{ checksum "Gemfile.lock" }}
 
       # Bundle install dependencies
-      - run: gem bundle install
+      - run: bundle install
 
       # Cache Dependencies
       - save_cache:
