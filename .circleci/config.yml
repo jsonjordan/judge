@@ -16,6 +16,7 @@ jobs:
       - bundle-install/bundle-install
 
       # Bundle install dependencies
+      - run: bundle install
       - run: appraisal install
 
       # Setup the database
