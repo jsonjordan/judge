@@ -16,17 +16,17 @@ jobs:
       - bundle-install/bundle-install
 
       # Restore Cached Dependencies
-      - restore_cache:
-          key: judge-{{ checksum "Gemfile.lock" }}
+      # - restore_cache:
+      #     key: judge-{{ checksum "Gemfile.lock" }}
 
       # Bundle install dependencies
       - run: bundle install
 
       # Cache Dependencies
-      - save_cache:
-          key: judge-{{ checksum "Gemfile.lock" }}
-          paths:
-            - bin/bundle
+      # - save_cache:
+      #     key: judge-{{ checksum "Gemfile.lock" }}
+      #     paths:
+      #       - bin/bundle
 
       # Wait for DB
       # - run: dockerize -wait tcp://localhost:5432 -timeout 1m
