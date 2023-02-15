@@ -6,7 +6,7 @@ jobs:
   build:
     working_directory: ~/judge
     docker:
-      - image: ubi8/ruby-27
+      - image: ubi8/ruby-30
         environment:
           RAILS_ENV: test
       - image: keinos/sqlite3:3.40.1
