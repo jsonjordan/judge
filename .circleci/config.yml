@@ -13,7 +13,7 @@ jobs:
       - checkout
 
       # Restore Cached Dependencies
-      - type: cache-restore
+      - restore_cache
         name: Restore bundle cache
         key: judge-{{ checksum "Gemfile.lock" }}
 
@@ -21,7 +21,7 @@ jobs:
       - run: gem bundle install
 
       # Cache Dependencies
-      - type: cache-save
+      - save_cache
         name: Store bundle cache
         key: judge-{{ checksum "Gemfile.lock" }}
         paths:
