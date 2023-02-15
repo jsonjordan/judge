@@ -6,7 +6,7 @@ jobs:
   build:
     working_directory: ~/judge
     docker:
-      - image: circleci/ruby:3.3
+      - image: circleci/ruby
         environment:
           RAILS_ENV: test
       - image: keinos/sqlite3:3.40.1
