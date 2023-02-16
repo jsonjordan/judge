@@ -1,5 +1,8 @@
 source "http://rubygems.org"
 
-gem 'sprockets-rails', :require => 'sprockets/railtie'
+# group :test do
+#   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+#   gem 'sprockets-rails', :require => 'sprockets/railtie'
+# end
 
 gemspec
