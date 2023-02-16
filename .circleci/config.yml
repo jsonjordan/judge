@@ -1,7 +1,5 @@
 ---
 version: 2.1
-orbs:
-  bundle-install: toshimaru/bundle-install@0.3.1
 jobs:
   build:
     working_directory: ~/judge
@@ -13,25 +11,12 @@ jobs:
 
     steps:
       - checkout
-      - bundle-install/bundle-install
 
-      # Restore Cached Dependencies
-      # - restore_cache:
-      #     key: judge-{{ checksum "Gemfile.lock" }}
-
-      # Bundle install dependencies
       - run: bundle install
       - run: bundle exec appraisal install
 
-      # Cache Dependencies
-      # - save_cache:
-      #     key: judge-{{ checksum "Gemfile.lock" }}
-      #     paths:
-      #       - bin/bundle
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
 
-      # Setup the database
-      - run: bundle exec appraisal rake db:create
-      - run: bundle exec appraisal rake db:migrate
+      - run: bundle exec rake db:setup
 
-      # Run the tests
-      - run: bundle exec appraisal rspec
+      - run: bundle exec appraisal rake
