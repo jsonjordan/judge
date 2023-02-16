@@ -15,9 +15,19 @@ jobs:
       - checkout
       - bundle-install/bundle-install
 
+      # Restore Cached Dependencies
+      # - restore_cache:
+      #     key: judge-{{ checksum "Gemfile.lock" }}
+
       # Bundle install dependencies
       - run: bundle install
       - run: bundle exec appraisal install
+
+      # Cache Dependencies
+      # - save_cache:
+      #     key: judge-{{ checksum "Gemfile.lock" }}
+      #     paths:
+      #       - bin/bundle
 
       # Setup the database
       - run: bundle exec appraisal rake db:create

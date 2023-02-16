@@ -13,4 +13,3 @@ spec/dummy/tmp/**/*
 spec/dummy/log/**/*
 *.sqlite3
 .rspec
-gemfiles/*.lock
